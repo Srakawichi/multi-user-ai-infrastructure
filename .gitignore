@@ -1,11 +1,47 @@
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+*.env
+.aws/
+credentials
+config
+
+# =========================
+# Python (optional future use)
+# =========================
 __pycache__/
 *.pyc
-.env
-.venv
+.venv/
+
+# =========================
+# Node (optional future use)
+# =========================
 node_modules/
 
+# =========================
 # Docker
+# =========================
 *.log
+docker-compose.override.yml
 
+# =========================
+# Terraform (future infra)
+# =========================
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
 # OS
+# =========================
 .DS_Store
+Thumbs.db
+
