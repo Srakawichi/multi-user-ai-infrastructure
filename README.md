@@ -59,7 +59,7 @@ http://localhost:9000
 
 ## Architecture
 
-![Architecture Diagram](/docs/multi-user-ai-graph.png)
+![Architecture Diagram](/docs/multi-user-ai-graph.pdf)
 
 The architecture follows a zero-trust design, avoiding any public exposure. 
 Access is exclusively managed through AWS Systems Manager (SSM) with IAM-based authentication.
