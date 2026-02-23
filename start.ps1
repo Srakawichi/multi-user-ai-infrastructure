@@ -1,4 +1,4 @@
-# Stoppe bei Fehlern
+# stop when an error occurs
 $ErrorActionPreference = "Stop"
 
 Write-Host "Starting infrastructure..."
@@ -6,15 +6,15 @@ docker compose up -d
 
 Write-Host "Waiting for model initialization to complete..."
 
-# Logs im Hintergrund starten
+# start log streaming in the background
 $logJob = Start-Job -ScriptBlock {
     docker compose logs -f ollama-init
 }
 
-# Warten bis der Init-Container beendet ist
+# wait until the init container has finished
 docker wait multi-user-ai-infrastructure-ollama-init-1 | Out-Null
 
-# Log-Job stoppen
+# stop the log job
 Stop-Job $logJob | Out-Null
 Remove-Job $logJob | Out-Null
 
