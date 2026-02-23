@@ -9,10 +9,10 @@ docker-compose logs -f ollama-init &
 
 LOG_PID=$!
 
-# Warte bis der Init-Container beendet ist
+# wait until the init container has finished
 docker wait multi-user-ai-infrastructure-ollama-init-1 > /dev/null
 
-# Stoppe das Log-Following
+# stop the log following
 kill $LOG_PID 2>/dev/null || true
 
 echo ""
