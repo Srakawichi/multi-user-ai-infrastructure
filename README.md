@@ -91,7 +91,7 @@ Access is exclusively managed through AWS Systems Manager (SSM) with IAM-based a
 
 This project serves as a foundation for a secure enterprise-grade AI platform.
 
-Future improvements include GPU-based scaling for larger models, Kubernetes orchestration for container management, Infrastructure-as-Code automation, and automated CI/CD pipelines with integration testing to ensure production reliability.
+Future improvements include GPU-based scaling for larger models, Terraform-based infrastructure provisioning for reproducible deployments, Kubernetes orchestration for container management, Infrastructure-as-Code automation, and automated CI/CD pipelines with integration testing to ensure production reliability.
 
 The long-term vision is to evolve this setup into a scalable, production-ready, zero-trust AI infrastructure architecture.
 
