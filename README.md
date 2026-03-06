@@ -16,11 +16,11 @@ The architecture follows cloud-native principles and can be extended toward GPU 
 
 ### Software
 
+- Git
 - Docker
 - Docker Compose
 - AWS CLI
-
-AWS Session Manager Plugin (for secure port forwarding)
+- AWS Session Manager Plugin (for secure port forwarding)
 
 ### Recommended for Production Usage
 
