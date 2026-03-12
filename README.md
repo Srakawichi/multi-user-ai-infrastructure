@@ -46,6 +46,11 @@ This ID is required to connect to the instance using AWS Systems Manager.
 ```bash
 aws ssm start-session --target <INSTANCE_ID>
 ```
+- if you don't have permission to run docker
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
 
 ### 2. Deploy the AI Infrastructure (Executed on EC2)
 Clone the repository and start the containers:
