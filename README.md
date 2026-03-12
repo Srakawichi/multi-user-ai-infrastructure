@@ -46,11 +46,6 @@ This ID is required to connect to the instance using AWS Systems Manager.
 ```bash
 aws ssm start-session --target <INSTANCE_ID>
 ```
-- if you don't have permission to run docker
-```bash
-sudo usermod -aG docker $USER
-newgrp docker
-```
 
 ### 2. Deploy the AI Infrastructure (Executed on EC2)
 Clone the repository and start the containers:
@@ -58,6 +53,11 @@ Clone the repository and start the containers:
 git clone https://github.com/Srakawichi/multi-user-ai-infrastructure.git
 cd multi-user-ai-infrastructure
 ./start.sh
+```
+- if you don't have permission to run docker
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
 ```
 This process starts all required containers, automatically provisions the LLM model, and initializes persistent storage.
 ### 3. Create Secure Port Forwarding Session (Executed on Local Machine)
