@@ -27,8 +27,8 @@ data "aws_subnets" "default" {
 }
 
 # Security Group ohne Inbound Regeln
-resource "aws_security_group" "ollama_sg" {
-  name        = "ollama-no-inbound"
+resource "aws_security_group" "ollama_SecurityGroup" {
+  name_prefix = "ollama-"
   description = "No inbound access"
   vpc_id      = data.aws_vpc.default.id
 
@@ -40,6 +40,7 @@ resource "aws_security_group" "ollama_sg" {
   }
 }
 
+# EC2 Instance
 resource "aws_instance" "ollama_server" {
 
   ami           = data.aws_ami.amazon_linux.id
@@ -48,10 +49,10 @@ resource "aws_instance" "ollama_server" {
   subnet_id                   = data.aws_subnets.default.ids[0]
   associate_public_ip_address = true
 
-  iam_instance_profile = "EC2-SSM-Ollama-Role"
+  iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
 
   vpc_security_group_ids = [
-    aws_security_group.ollama_sg.id
+    aws_security_group.ollama_SecurityGroup.id
   ]
 
   root_block_device {
