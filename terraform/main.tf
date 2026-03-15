@@ -111,7 +111,7 @@ resource "aws_instance" "ollama_server" {
   associate_public_ip_address = true
 
   vpc_security_group_ids = [
-    aws_security_group.ollama_SecurityGroup.id
+    aws_security_group.ollama_sg.id
   ]
 
   iam_instance_profile = aws_iam_instance_profile.ssm_profile.name
