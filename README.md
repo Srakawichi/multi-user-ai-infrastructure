@@ -54,7 +54,7 @@ git clone https://github.com/Srakawichi/multi-user-ai-infrastructure.git
 cd multi-user-ai-infrastructure
 ./start.sh
 ```
-- if you don't have permission to run docker
+If you don't have permission to run Docker, execute the following commands and reconnect to your session.
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
