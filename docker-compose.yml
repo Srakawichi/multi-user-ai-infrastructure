@@ -15,14 +15,9 @@ services:
     environment:
       - OLLAMA_HOST=http://ollama:11434
     entrypoint: >
-      /bin/sh -c "
-      echo 'Waiting for Ollama...' &&
-      until ollama list >/dev/null 2>&1; do
+      /bin/sh -c " echo 'Waiting for Ollama...' && until ollama list >/dev/null 2>&1; do
         sleep 2;
-      done &&
-      echo 'Ollama is ready' &&
-      ollama pull llama3
-      "
+      done && echo 'Ollama is ready' && ollama pull llama3 && ollama pull tinyllama && ollama pull phi3 "
     volumes:
       - ollama_data:/root/.ollama
     restart: "no"
@@ -43,4 +38,5 @@ services:
 volumes:
   ollama_data:
   openwebui_data:
+
 
