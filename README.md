@@ -56,8 +56,7 @@ cd multi-user-ai-infrastructure
 ```
 If you don't have permission to run Docker, execute the following commands and reconnect to your session.
 ```bash
-sudo usermod -aG docker $USER
-newgrp docker
+sudo usermod -aG docker ssm-user
 ```
 This process starts all required containers, automatically provisions the LLM model, and initializes persistent storage.
 ### 3. Create Secure Port Forwarding Session (Executed on Local Machine)
