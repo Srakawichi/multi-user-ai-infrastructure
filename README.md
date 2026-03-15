@@ -54,14 +54,15 @@ git clone https://github.com/Srakawichi/multi-user-ai-infrastructure.git
 cd multi-user-ai-infrastructure
 ./start.sh
 ```
+If you don't have permission to run Docker, execute the following commands and reconnect to your session.
+```bash
+sudo usermod -aG docker ssm-user
+```
 This process starts all required containers, automatically provisions the LLM model, and initializes persistent storage.
 ### 3. Create Secure Port Forwarding Session (Executed on Local Machine)
 From your local system (e.g. Windows with AWS CLI installed), establish the secure tunnel:
 ```bash
-aws ssm start-session \
-  --target <INSTANCE_ID> \
-  --document-name AWS-StartPortForwardingSession \
-  --parameters "portNumber=8080,localPortNumber=9000"
+aws ssm start-session --target <INSTANCE_ID> --document-name AWS-StartPortForwardingSession --parameters "portNumber=8080,localPortNumber=9000"
 ```
 ### 4. Access Web Interface
 ```bash
