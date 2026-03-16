@@ -68,6 +68,9 @@ aws ssm start-session --target <INSTANCE_ID> --document-name AWS-StartPortForwar
 ```bash
 http://localhost:9000
 ```
+### Delete your instance
+When you are finished, use the command terraform destroy
+
 ### Notes
 - If running the system locally (Linux recommended), only step 2 is required.
 - If port 8080 is already in use, adjust the port mapping in the docker-compose.yml file.
