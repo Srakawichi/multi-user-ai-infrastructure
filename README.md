@@ -118,10 +118,11 @@ The following roadmap outlines planned improvements and current implementation s
 | Feature / Improvement | Description | Status |
 |---|---|---|
 | Terraform-based infrastructure provisioning | Reproducible infrastructure deployment using Terraform | ✅ Implemented |
+| CI/CD pipelines with integration testing | Automated testing and deployment workflows | ⬜ Planned |
 | GPU-based scaling | Support for GPU-enabled instances for faster LLM inference | ⬜ Planned |
 | Kubernetes orchestration | Container orchestration for scalable deployments | ⬜ Planned |
 | Infrastructure-as-Code automation | Extended automation for infrastructure management | ⬜ Planned |
-| CI/CD pipelines with integration testing | Automated testing and deployment workflows | ⬜ Planned |
+
 
 The long-term vision is to evolve this setup into a scalable, production-ready, zero-trust AI infrastructure architecture.
 
