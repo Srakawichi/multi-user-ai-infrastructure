@@ -1,3 +1,14 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+    random = {
+      source = "hashicorp/random"
+    }
+  }
+}
+
 provider "aws" {
   region = var.region
 }
@@ -35,9 +46,12 @@ data "aws_subnets" "default" {
 # Security Group
 # No inbound rules
 # ---------------------------
+resource "random_id" "suffix" {
+  byte_length = 2
+}
 
 resource "aws_security_group" "ollama_sg" {
-  name        = "ollama-no-inbound"
+  name        = "ollama-no-inbound-${random_id.suffix.hex}"
   description = "No inbound access (SSM only)"
   vpc_id      = data.aws_vpc.default.id
 
@@ -61,7 +75,7 @@ resource "aws_security_group" "ollama_sg" {
 
 resource "aws_iam_role" "ssm_role" {
 
-  name = "ec2-ssm-role"
+name = "ec2-ssm-role-${random_id.suffix.hex}"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -93,7 +107,7 @@ resource "aws_iam_role_policy_attachment" "ssm_policy" {
 
 resource "aws_iam_instance_profile" "ssm_profile" {
 
-  name = "ec2-ssm-profile"
+  name = "ec2-ssm-profile-${random_id.suffix.hex}"
   role = aws_iam_role.ssm_role.name
 
 }
