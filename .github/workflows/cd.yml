@@ -35,7 +35,12 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        run: terraform init
+        run: |
+          terraform init \
+            -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
+            -backend-config="key=multi-user-ai-infrastructure/terraform.tfstate" \
+            -backend-config="region=eu-central-1" \
+            -backend-config="encrypt=true"
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
