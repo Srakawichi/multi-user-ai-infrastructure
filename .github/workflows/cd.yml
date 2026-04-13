@@ -34,8 +34,21 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Validate backend secret
+        run: |
+          if [ -z "${{ secrets.TF_STATE_BUCKET }}" ]; then
+            echo "Missing GitHub secret TF_STATE_BUCKET"
+            exit 1
+          fi
+
       - name: Terraform Init
-        run: terraform init
+        run: |
+          terraform init \
+            -input=false \
+            -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
+            -backend-config="key=multi-user-ai-infrastructure/terraform.tfstate" \
+            -backend-config="region=eu-central-1" \
+            -backend-config="encrypt=true"
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
