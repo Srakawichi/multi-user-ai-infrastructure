@@ -44,7 +44,6 @@ jobs:
       - name: Terraform Init
         run: |
           terraform init \
-            -input=false \
             -backend-config="bucket=${{ secrets.TF_STATE_BUCKET }}" \
             -backend-config="key=multi-user-ai-infrastructure/terraform.tfstate" \
             -backend-config="region=eu-central-1" \
