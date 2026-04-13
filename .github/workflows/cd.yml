@@ -34,6 +34,13 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      - name: Validate backend secret
+        run: |
+          if [ -z "${{ secrets.TF_STATE_BUCKET }}" ]; then
+            echo "Missing GitHub secret TF_STATE_BUCKET"
+            exit 1
+          fi
+
       - name: Terraform Init
         run: |
           terraform init \

@@ -18,6 +18,7 @@ The architecture follows cloud-native principles and can be extended toward GPU 
 ### Infrastructure Deployment (Terraform)
 
 The infrastructure can be provisioned automatically using Terraform.
+For CI/CD, Terraform state is stored remotely in S3 so `apply` and `destroy` use the same state.
 
 Terraform creates:
 
@@ -26,6 +27,16 @@ Terraform creates:
 - IAM role attachment for AWS Systems Manager (SSM)
 - Security group with **no inbound rules**
 - Docker, Docker Compose, and Git installation via EC2 user data
+
+### GitHub CD State Backend (required once)
+
+Before running the CD workflow, create an S3 bucket for Terraform state and add this repository secret:
+
+- `TF_STATE_BUCKET` → name of your S3 bucket for Terraform state
+
+The workflow stores state under:
+
+- `multi-user-ai-infrastructure/terraform.tfstate`
 
 ### Initialize Terraform
 ```bash
@@ -125,6 +136,5 @@ The following roadmap outlines planned improvements and current implementation s
 
 
 The long-term vision is to evolve this setup into a scalable, production-ready, zero-trust AI infrastructure architecture.
-
 
 
